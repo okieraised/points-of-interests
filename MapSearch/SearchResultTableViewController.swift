@@ -27,12 +27,14 @@ class SearchResultTableViewController: UITableViewController {
         }
     }
     
-    private var suggestionController: SuggestionsTableTableViewController!
+    private var suggestionController: SuggestionsTableViewController!
     private var searchController: UISearchController!
 
     @IBOutlet private var viewAllButton: UIBarButtonItem!
-    @IBOutlet private var locationManager: LocationManager!
-    private var locationManagerObserver: NSKeyValueObservation?
+    
+    private let locationManager = CLLocationManager()
+    private var currentPlacemark: CLPlacemark?
+    private var boundingRegion: MKCoordinateRegion = MKCoordinateRegion(MKMapRect.world)
     
     private var foregroundRestorationObserver: NSObjectProtocol?
     
@@ -44,39 +46,20 @@ class SearchResultTableViewController: UITableViewController {
         }
     }
     
-    private var boundingRegion: MKCoordinateRegion?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        suggestionController = SuggestionsTableTableViewController()
+        locationManager.delegate = self
+        
+        suggestionController = SuggestionsTableViewController(style: .grouped)
         suggestionController.tableView.delegate = self
         
         searchController = UISearchController(searchResultsController: suggestionController)
         searchController.searchResultsUpdater = suggestionController
         
-        searchController.searchBar.isUserInteractionEnabled = false
-        searchController.searchBar.alpha = 0.5
-        
-        locationManagerObserver = locationManager.observe(\LocationManager.currentLocation) { [weak self] (_, _) in
-            if let location = self?.locationManager.currentLocation {
-                // This sample only searches for nearby locations, defined by the device's location. Once the current location is
-                // determined, enable the search functionality.
-                
-                let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 12_000, longitudinalMeters: 12_000)
-                self?.suggestionController.searchCompleter.region = region
-                self?.boundingRegion = region
-                
-                self?.searchController.searchBar.isUserInteractionEnabled = true
-                self?.searchController.searchBar.alpha = 1.0
-                
-                self?.tableView.reloadData()
-            }
-        }
-        
         let name = UIApplication.willEnterForegroundNotification
-        foregroundRestorationObserver = NotificationCenter.default.addObserver(forName: name, object: nil, queue: nil, using: { [weak self] (_) in
+        foregroundRestorationObserver = NotificationCenter.default.addObserver(forName: name, object: nil, queue: nil, using: { [unowned self] (_) in
             // Get a new location when returning from Settings to enable location services.
-            self?.locationManager.requestLocation()
+            self.requestLocation()
         })
     }
 
@@ -89,7 +72,6 @@ class SearchResultTableViewController: UITableViewController {
         // Keep the search bar visible at all times.
         navigationItem.hidesSearchBarWhenScrolling = false
         
-        searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
         
         /*
@@ -101,7 +83,7 @@ class SearchResultTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        locationManager.requestLocation()
+        requestLocation()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -115,7 +97,7 @@ class SearchResultTableViewController: UITableViewController {
             
             // Pass the new bounding region to the map destination view controller and center it on the single placemark.
             var region = boundingRegion
-            region?.center = mapItem.placemark.coordinate
+            region.center = mapItem.placemark.coordinate
             mapViewController.boundingRegion = region
             
             // Pass the individual place to our map destination view controller.
@@ -146,26 +128,24 @@ class SearchResultTableViewController: UITableViewController {
     /// - Tag: SearchRequest
     private func search(using searchRequest: MKLocalSearch.Request) {
         // Confine the map search area to an area around the user's current location.
-        if let region = boundingRegion {
-            searchRequest.region = region
-        }
+        searchRequest.region = boundingRegion
         
-        // Use the network activity indicator as a hint to the user that a search is in progress.
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        // Include only point of interest results. This excludes results based on address matches.
+        searchRequest.resultTypes = .pointOfInterest
         
         localSearch = MKLocalSearch(request: searchRequest)
-        localSearch?.start { [weak self] (response, error) in
+        localSearch?.start { [unowned self] (response, error) in
             guard error == nil else {
-                self?.displaySearchError(error)
+                self.displaySearchError(error)
                 return
             }
             
-            self?.places = response?.mapItems
+            self.places = response?.mapItems
             
             // Used when setting the map's region in `prepareForSegue`.
-            self?.boundingRegion = response?.boundingRegion
-            
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            if let updatedRegion = response?.boundingRegion {
+                self.boundingRegion = updatedRegion
+            }
         }
     }
     
@@ -178,23 +158,83 @@ class SearchResultTableViewController: UITableViewController {
     }
 }
 
+// MARK: - Location Handling
+
+extension SearchResultTableViewController {
+    private func requestLocation() {
+        guard CLLocationManager.locationServicesEnabled() else {
+            displayLocationServicesDisabledAlert()
+            return
+        }
+        
+        let status = CLLocationManager.authorizationStatus()
+        guard status != .denied else {
+            displayLocationServicesDeniedAlert()
+            return
+        }
+        
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+    }
+    
+    private func displayLocationServicesDisabledAlert() {
+        let message = NSLocalizedString("LOCATION_SERVICES_DISABLED", comment: "Location services are disabled")
+        let alertController = UIAlertController(title: NSLocalizedString("LOCATION_SERVICES_ALERT_TITLE", comment: "Location services alert title"),
+                                                message: message,
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("BUTTON_OK", comment: "OK alert button"), style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    private func displayLocationServicesDeniedAlert() {
+        let message = NSLocalizedString("LOCATION_SERVICES_DENIED", comment: "Location services are denied")
+        let alertController = UIAlertController(title: NSLocalizedString("LOCATION_SERVICES_ALERT_TITLE", comment: "Location services alert title"),
+                                                message: message,
+                                                preferredStyle: .alert)
+        let settingsButtonTitle = NSLocalizedString("BUTTON_SETTINGS", comment: "Settings alert button")
+        let openSettingsAction = UIAlertAction(title: settingsButtonTitle, style: .default) { (_) in
+            if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                // Take the user to the Settings app to change permissions.
+                UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+            }
+        }
+        
+        let cancelButtonTitle = NSLocalizedString("BUTTON_CANCEL", comment: "Location denied cancel button")
+        let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .cancel, handler: nil)
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(openSettingsAction)
+        present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension SearchResultTableViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { (placemark, error) in
+            guard error == nil else { return }
+            
+            self.currentPlacemark = placemark?.first
+            self.boundingRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 12_000, longitudinalMeters: 12_000)
+            self.suggestionController.updatePlacemark(self.currentPlacemark, boundingRegion: self.boundingRegion)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        // Handle any errors returned from Location Services.
+    }
+}
+
+// MARK: - UITableViewDataSource
+
 extension SearchResultTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard locationManager.currentLocation != nil else { return 1 }
         return places?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard locationManager.currentLocation != nil else {
-            let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-            cell.textLabel?.text = NSLocalizedString("LOCATION_SERVICES_WAITING", comment: "Waiting for location table cell")
-            let spinner = UIActivityIndicatorView(style: .gray)
-            spinner.startAnimating()
-            cell.accessoryView = spinner
-            
-            return cell
-        }
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: CellReuseID.resultCell.rawValue, for: indexPath)
         
         if let mapItem = places?[indexPath.row] {
@@ -204,13 +244,23 @@ extension SearchResultTableViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var header = NSLocalizedString("SEARCH_RESULTS", comment: "Standard result text")
+        if let city = currentPlacemark?.locality {
+            let templateString = NSLocalizedString("SEARCH_RESULTS_LOCATION", comment: "Search result text with city")
+            header = String(format: templateString, city)
+        }
+        
+        return header
+    }
 }
+
+// MARK: - UITableViewDelegate
 
 extension SearchResultTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        guard locationManager.currentLocation != nil else { return }
         
         if tableView == suggestionController.tableView, let suggestion = suggestionController.completerResults?[indexPath.row] {
             searchController.isActive = false
@@ -219,6 +269,8 @@ extension SearchResultTableViewController {
         }
     }
 }
+
+// MARK: - UISearchBarDelegate
 
 extension SearchResultTableViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

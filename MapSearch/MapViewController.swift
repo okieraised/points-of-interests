@@ -35,6 +35,7 @@ class MapViewController: UIViewController {
         
         // Make sure `MKPinAnnotationView` and the reuse identifier is recognized in this map view.
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: AnnotationReuseID.pin.rawValue)
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -73,6 +74,7 @@ extension MapViewController: MKMapViewDelegate {
         // Annotation views should be dequeued from a reuse queue to be efficent.
         let view = mapView.dequeueReusableAnnotationView(withIdentifier: AnnotationReuseID.pin.rawValue, for: annotation) as? MKMarkerAnnotationView
         view?.canShowCallout = true
+        view?.clusteringIdentifier = "searchResult"
         
         // If the annotation has a URL, add an extra Info button to the annotation so users can open the URL.
         if annotation.url != nil {

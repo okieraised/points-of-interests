@@ -12,7 +12,7 @@ The MapSearch code sample demonstrates how to programmatically search for map-ba
 ``` swift
 func updateSearchResults(for searchController: UISearchController) {
     // Ask `MKLocalSearchCompleter` for new completion suggestions based on the change in the text entered in `UISearchBar`.
-    searchCompleter.queryFragment = searchController.searchBar.text ?? ""
+    searchCompleter?.queryFragment = searchController.searchBar.text ?? ""
 }
 ```
 [View in Source](x-source-tag://UpdateQuery)
@@ -35,7 +35,7 @@ func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
 func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
     // Handle any errors returned from MKLocalSearchCompleter.
     if let error = error as NSError? {
-        print("MKLocalSearchCompleter encountered an error: \(error.localizedDescription)")
+        print("MKLocalSearchCompleter encountered an error: \(error.localizedDescription). The query fragment is: \"\(completer.queryFragment)\"")
     }
 }
 ```
@@ -89,26 +89,24 @@ An [`MKLocalSearch.Request`][10] takes either an [`MKLocalSearchCompletion`][5] 
 ``` swift
 private func search(using searchRequest: MKLocalSearch.Request) {
     // Confine the map search area to an area around the user's current location.
-    if let region = boundingRegion {
-        searchRequest.region = region
-    }
+    searchRequest.region = boundingRegion
     
-    // Use the network activity indicator as a hint to the user that a search is in progress.
-    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    // Include only point of interest results. This excludes results based on address matches.
+    searchRequest.resultTypes = .pointOfInterest
     
     localSearch = MKLocalSearch(request: searchRequest)
-    localSearch?.start { [weak self] (response, error) in
+    localSearch?.start { [unowned self] (response, error) in
         guard error == nil else {
-            self?.displaySearchError(error)
+            self.displaySearchError(error)
             return
         }
         
-        self?.places = response?.mapItems
+        self.places = response?.mapItems
         
         // Used when setting the map's region in `prepareForSegue`.
-        self?.boundingRegion = response?.boundingRegion
-        
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        if let updatedRegion = response?.boundingRegion {
+            self.boundingRegion = updatedRegion
+        }
     }
 }
 ```

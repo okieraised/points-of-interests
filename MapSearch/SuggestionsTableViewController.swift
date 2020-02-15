@@ -8,26 +8,60 @@ Table view controller used to display suggested search criteria.
 import UIKit
 import MapKit
 
-class SuggestionsTableTableViewController: UITableViewController {
+class SuggestionsTableViewController: UITableViewController {
     
-    let searchCompleter = MKLocalSearchCompleter()
+    private var searchCompleter: MKLocalSearchCompleter?
+    private var searchRegion: MKCoordinateRegion = MKCoordinateRegion(MKMapRect.world)
+    private var currentPlacemark: CLPlacemark?
+    
     var completerResults: [MKLocalSearchCompletion]?
-    
-    convenience init() {
-        self.init(style: .plain)
-        searchCompleter.delegate = self
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(SuggestedCompletionTableViewCell.self, forCellReuseIdentifier: SuggestedCompletionTableViewCell.reuseID)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        startProvidingCompletions()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        stopProvidingCompletions()
+    }
+    
+    private func startProvidingCompletions() {
+        searchCompleter = MKLocalSearchCompleter()
+        searchCompleter?.delegate = self
+        searchCompleter?.resultTypes = .pointOfInterest
+        searchCompleter?.region = searchRegion
+    }
+    
+    private func stopProvidingCompletions() {
+        searchCompleter = nil
+    }
+    
+    func updatePlacemark(_ placemark: CLPlacemark?, boundingRegion: MKCoordinateRegion) {
+        currentPlacemark = placemark
+        searchCompleter?.region = searchRegion
+    }
 }
 
-extension SuggestionsTableTableViewController {
+extension SuggestionsTableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return completerResults?.count ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var header = NSLocalizedString("SEARCH_RESULTS", comment: "Standard result text")
+        if let city = currentPlacemark?.locality {
+            let templateString = NSLocalizedString("SEARCH_RESULTS_LOCATION", comment: "Search result text with city")
+            header = String(format: templateString, city)
+        }
+        
+        return header
     }
 
     /// - Tag: HighlightFragment
@@ -59,7 +93,7 @@ extension SuggestionsTableTableViewController {
     }
 }
 
-extension SuggestionsTableTableViewController: MKLocalSearchCompleterDelegate {
+extension SuggestionsTableViewController: MKLocalSearchCompleterDelegate {
     
     /// - Tag: QueryResults
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
@@ -72,17 +106,17 @@ extension SuggestionsTableTableViewController: MKLocalSearchCompleterDelegate {
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
         // Handle any errors returned from MKLocalSearchCompleter.
         if let error = error as NSError? {
-            print("MKLocalSearchCompleter encountered an error: \(error.localizedDescription)")
+            print("MKLocalSearchCompleter encountered an error: \(error.localizedDescription). The query fragment is: \"\(completer.queryFragment)\"")
         }
     }
 }
 
-extension SuggestionsTableTableViewController: UISearchResultsUpdating {
+extension SuggestionsTableViewController: UISearchResultsUpdating {
 
     /// - Tag: UpdateQuery
     func updateSearchResults(for searchController: UISearchController) {
         // Ask `MKLocalSearchCompleter` for new completion suggestions based on the change in the text entered in `UISearchBar`.
-        searchCompleter.queryFragment = searchController.searchBar.text ?? ""
+        searchCompleter?.queryFragment = searchController.searchBar.text ?? ""
     }
 }
 

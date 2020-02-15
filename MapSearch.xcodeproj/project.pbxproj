@@ -15,15 +15,13 @@
 		606A94D8211B802D008FF650 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A94D5211B802D008FF650 /* SearchResultTableViewController.swift */; };
 		606A94D9211B802D008FF650 /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A94D6211B802D008FF650 /* PlaceAnnotation.swift */; };
 		606A94DC211B80CF008FF650 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 606A94DB211B80CF008FF650 /* README.md */; };
-		606A94DF211B93CB008FF650 /* SuggestionsTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A94DE211B93CB008FF650 /* SuggestionsTableTableViewController.swift */; };
-		606A94E1211B9521008FF650 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A94E0211B9521008FF650 /* LocationManager.swift */; };
+		606A94DF211B93CB008FF650 /* SuggestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A94DE211B93CB008FF650 /* SuggestionsTableViewController.swift */; };
 		606A94E3211BBDD8008FF650 /* MKPlacemark+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A94E2211BBDD8008FF650 /* MKPlacemark+Extension.swift */; };
 		606F6663212740DE00B06F20 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 606F6665212740DE00B06F20 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		00CF281000CF294000000001 /* SampleCode.xcconfig */ = {isa = PBXFileReference; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
-		03D1AC5003D1B2A000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE.txt; sourceTree = "<group>"; };
+		24DAE689B81EEC62AC4D4FF2 /* SampleCode.xcconfig */ = {isa = PBXFileReference; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		606A94BF211B7FC9008FF650 /* MapSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		606A94C2211B7FC9008FF650 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		606A94C7211B7FC9008FF650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -34,10 +32,10 @@
 		606A94D5211B802D008FF650 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
 		606A94D6211B802D008FF650 /* PlaceAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
 		606A94DB211B80CF008FF650 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		606A94DE211B93CB008FF650 /* SuggestionsTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsTableTableViewController.swift; sourceTree = "<group>"; };
-		606A94E0211B9521008FF650 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		606A94DE211B93CB008FF650 /* SuggestionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsTableViewController.swift; sourceTree = "<group>"; };
 		606A94E2211BBDD8008FF650 /* MKPlacemark+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKPlacemark+Extension.swift"; sourceTree = "<group>"; };
 		606F6664212740DE00B06F20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C9809B958286BBE88E9F74EA /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,31 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00D2258000D285D000000001 /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				00CF281000CF294000000001 /* SampleCode.xcconfig */,
-			);
-			name = Configuration;
-			sourceTree = "<group>";
-		};
-		03D13B6003D29C3000000001 /* LICENSE */ = {
-			isa = PBXGroup;
-			children = (
-				03D1AC5003D1B2A000000001 /* LICENSE.txt */,
-			);
-			name = LICENSE;
-			path = LICENSE;
-			sourceTree = "<group>";
-		};
 		606A94B6211B7FC9008FF650 = {
 			isa = PBXGroup;
 			children = (
 				606A94DB211B80CF008FF650 /* README.md */,
 				606A94C1211B7FC9008FF650 /* MapSearch */,
 				606A94C0211B7FC9008FF650 /* Products */,
-				00D2258000D285D000000001 /* Configuration */,
-				03D13B6003D29C3000000001 /* LICENSE */,
+				8E0D434B0AC8A9B365CAE8E8 /* Configuration */,
+				88B62DAC71F0D030E7773290 /* LICENSE */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,13 +72,12 @@
 			isa = PBXGroup;
 			children = (
 				606A94C2211B7FC9008FF650 /* AppDelegate.swift */,
-				606A94E0211B9521008FF650 /* LocationManager.swift */,
 				606A94D4211B802C008FF650 /* MapViewController.swift */,
 				606A94E2211BBDD8008FF650 /* MKPlacemark+Extension.swift */,
 				606A94D6211B802D008FF650 /* PlaceAnnotation.swift */,
 				606A94DA211B803C008FF650 /* Resources */,
 				606A94D5211B802D008FF650 /* SearchResultTableViewController.swift */,
-				606A94DE211B93CB008FF650 /* SuggestionsTableTableViewController.swift */,
+				606A94DE211B93CB008FF650 /* SuggestionsTableViewController.swift */,
 			);
 			path = MapSearch;
 			sourceTree = "<group>";
@@ -114,6 +94,23 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		88B62DAC71F0D030E7773290 /* LICENSE */ = {
+			isa = PBXGroup;
+			children = (
+				C9809B958286BBE88E9F74EA /* LICENSE.txt */,
+			);
+			name = LICENSE;
+			path = LICENSE;
+			sourceTree = "<group>";
+		};
+		8E0D434B0AC8A9B365CAE8E8 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				24DAE689B81EEC62AC4D4FF2 /* SampleCode.xcconfig */,
+			);
+			name = Configuration;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -124,7 +121,6 @@
 				606A94BB211B7FC9008FF650 /* Sources */,
 				606A94BC211B7FC9008FF650 /* Frameworks */,
 				606A94BD211B7FC9008FF650 /* Resources */,
-				606A94DD211B80DC008FF650,
 			);
 			buildRules = (
 			);
@@ -147,6 +143,7 @@
 				TargetAttributes = {
 					606A94BE211B7FC9008FF650 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1100;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -189,9 +186,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				606A94DF211B93CB008FF650 /* SuggestionsTableTableViewController.swift in Sources */,
+				606A94DF211B93CB008FF650 /* SuggestionsTableViewController.swift in Sources */,
 				606A94D9211B802D008FF650 /* PlaceAnnotation.swift in Sources */,
-				606A94E1211B9521008FF650 /* LocationManager.swift in Sources */,
 				606A94E3211BBDD8008FF650 /* MKPlacemark+Extension.swift in Sources */,
 				606A94C3211B7FC9008FF650 /* AppDelegate.swift in Sources */,
 				606A94D8211B802D008FF650 /* SearchResultTableViewController.swift in Sources */,
@@ -231,7 +227,7 @@
 /* Begin XCBuildConfiguration section */
 		606A94CF211B7FCA008FF650 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 00CF281000CF294000000001 /* SampleCode.xcconfig */;
+			baseConfigurationReference = 24DAE689B81EEC62AC4D4FF2 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -281,7 +277,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -293,7 +289,7 @@
 		};
 		606A94D0211B7FCA008FF650 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 00CF281000CF294000000001 /* SampleCode.xcconfig */;
+			baseConfigurationReference = 24DAE689B81EEC62AC4D4FF2 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -337,7 +333,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -348,7 +344,7 @@
 		};
 		606A94D2211B7FCA008FF650 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 00CF281000CF294000000001 /* SampleCode.xcconfig */;
+			baseConfigurationReference = 24DAE689B81EEC62AC4D4FF2 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -358,14 +354,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.MapSearch${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		606A94D3211B7FCA008FF650 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 00CF281000CF294000000001 /* SampleCode.xcconfig */;
+			baseConfigurationReference = 24DAE689B81EEC62AC4D4FF2 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -375,7 +371,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.MapSearch${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
