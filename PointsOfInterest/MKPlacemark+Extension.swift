@@ -2,7 +2,7 @@
 See LICENSE folder for this sample’s licensing information.
 
 Abstract:
-Helper extension for formatting an address for display.
+A utility file to format addresses for display.
 */
 
 import MapKit

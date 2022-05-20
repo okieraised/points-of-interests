@@ -3,39 +3,47 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6061B900280CD73700A88A4C /* MKPointOfInterestCategory+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6061B8FF280CD73700A88A4C /* MKPointOfInterestCategory+Extension.swift */; };
 		606A94C3211B7FC9008FF650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A94C2211B7FC9008FF650 /* AppDelegate.swift */; };
 		606A94C8211B7FC9008FF650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606A94C6211B7FC9008FF650 /* Main.storyboard */; };
 		606A94CA211B7FCA008FF650 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 606A94C9211B7FCA008FF650 /* Assets.xcassets */; };
 		606A94CD211B7FCA008FF650 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606A94CB211B7FCA008FF650 /* LaunchScreen.storyboard */; };
-		606A94D7211B802D008FF650 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A94D4211B802C008FF650 /* MapViewController.swift */; };
-		606A94D8211B802D008FF650 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A94D5211B802D008FF650 /* SearchResultTableViewController.swift */; };
-		606A94D9211B802D008FF650 /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A94D6211B802D008FF650 /* PlaceAnnotation.swift */; };
+		606A94D8211B802D008FF650 /* LocalSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A94D5211B802D008FF650 /* LocalSearchViewController.swift */; };
 		606A94DC211B80CF008FF650 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 606A94DB211B80CF008FF650 /* README.md */; };
-		606A94DF211B93CB008FF650 /* SuggestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A94DE211B93CB008FF650 /* SuggestionsTableViewController.swift */; };
+		606A94DF211B93CB008FF650 /* SuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A94DE211B93CB008FF650 /* SuggestionsViewController.swift */; };
 		606A94E3211BBDD8008FF650 /* MKPlacemark+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606A94E2211BBDD8008FF650 /* MKPlacemark+Extension.swift */; };
 		606F6663212740DE00B06F20 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 606F6665212740DE00B06F20 /* Localizable.strings */; };
+		607BC3B3280947D20038C308 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607BC3B2280947D20038C308 /* LocationService.swift */; };
+		607BC3B5280949CD0038C308 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607BC3B4280949CD0038C308 /* SceneDelegate.swift */; };
+		60A0AE8F28162FFF005BAC91 /* BaseSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A0AE8E28162FFF005BAC91 /* BaseSearchViewController.swift */; };
+		60E9C05728093D2200E0C371 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E9C05628093D2200E0C371 /* LocationDetailsViewController.swift */; };
+		60E9C059280945AE00E0C371 /* TappablePointOfInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E9C058280945AD00E0C371 /* TappablePointOfInterestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		24DAE689B81EEC62AC4D4FF2 /* SampleCode.xcconfig */ = {isa = PBXFileReference; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
-		606A94BF211B7FC9008FF650 /* MapSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6061B8FF280CD73700A88A4C /* MKPointOfInterestCategory+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPointOfInterestCategory+Extension.swift"; sourceTree = "<group>"; };
+		606A94BF211B7FC9008FF650 /* PointsOfInterest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PointsOfInterest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		606A94C2211B7FC9008FF650 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		606A94C7211B7FC9008FF650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		606A94C9211B7FCA008FF650 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		606A94CC211B7FCA008FF650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		606A94CE211B7FCA008FF650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		606A94D4211B802C008FF650 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		606A94D5211B802D008FF650 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
-		606A94D6211B802D008FF650 /* PlaceAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
+		606A94D5211B802D008FF650 /* LocalSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSearchViewController.swift; sourceTree = "<group>"; };
 		606A94DB211B80CF008FF650 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		606A94DE211B93CB008FF650 /* SuggestionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsTableViewController.swift; sourceTree = "<group>"; };
+		606A94DE211B93CB008FF650 /* SuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsViewController.swift; sourceTree = "<group>"; };
 		606A94E2211BBDD8008FF650 /* MKPlacemark+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKPlacemark+Extension.swift"; sourceTree = "<group>"; };
 		606F6664212740DE00B06F20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C9809B958286BBE88E9F74EA /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE.txt; sourceTree = "<group>"; };
+		607BC3B2280947D20038C308 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		607BC3B4280949CD0038C308 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		60A0AE8E28162FFF005BAC91 /* BaseSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSearchViewController.swift; sourceTree = "<group>"; };
+		60E9C05628093D2200E0C371 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
+		60E9C058280945AD00E0C371 /* TappablePointOfInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappablePointOfInterestViewController.swift; sourceTree = "<group>"; };
+		65D2122C1CABF5516B3584BE /* SampleCode.xcconfig */ = {isa = PBXFileReference; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
+		CC32910D99FCF80F89787E9C /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,33 +61,37 @@
 			isa = PBXGroup;
 			children = (
 				606A94DB211B80CF008FF650 /* README.md */,
-				606A94C1211B7FC9008FF650 /* MapSearch */,
+				606A94C1211B7FC9008FF650 /* PointsOfInterest */,
 				606A94C0211B7FC9008FF650 /* Products */,
-				8E0D434B0AC8A9B365CAE8E8 /* Configuration */,
-				88B62DAC71F0D030E7773290 /* LICENSE */,
+				9168BA389E6441E1D2D0939F /* Configuration */,
+				817D22B81C6F8ECE4504FAF8 /* LICENSE */,
 			);
 			sourceTree = "<group>";
 		};
 		606A94C0211B7FC9008FF650 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				606A94BF211B7FC9008FF650 /* MapSearch.app */,
+				606A94BF211B7FC9008FF650 /* PointsOfInterest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		606A94C1211B7FC9008FF650 /* MapSearch */ = {
+		606A94C1211B7FC9008FF650 /* PointsOfInterest */ = {
 			isa = PBXGroup;
 			children = (
 				606A94C2211B7FC9008FF650 /* AppDelegate.swift */,
-				606A94D4211B802C008FF650 /* MapViewController.swift */,
+				60A0AE8E28162FFF005BAC91 /* BaseSearchViewController.swift */,
+				606A94D5211B802D008FF650 /* LocalSearchViewController.swift */,
+				60E9C05628093D2200E0C371 /* LocationDetailsViewController.swift */,
+				607BC3B2280947D20038C308 /* LocationService.swift */,
 				606A94E2211BBDD8008FF650 /* MKPlacemark+Extension.swift */,
-				606A94D6211B802D008FF650 /* PlaceAnnotation.swift */,
+				6061B8FF280CD73700A88A4C /* MKPointOfInterestCategory+Extension.swift */,
 				606A94DA211B803C008FF650 /* Resources */,
-				606A94D5211B802D008FF650 /* SearchResultTableViewController.swift */,
-				606A94DE211B93CB008FF650 /* SuggestionsTableViewController.swift */,
+				607BC3B4280949CD0038C308 /* SceneDelegate.swift */,
+				606A94DE211B93CB008FF650 /* SuggestionsViewController.swift */,
+				60E9C058280945AD00E0C371 /* TappablePointOfInterestViewController.swift */,
 			);
-			path = MapSearch;
+			path = PointsOfInterest;
 			sourceTree = "<group>";
 		};
 		606A94DA211B803C008FF650 /* Resources */ = {
@@ -88,25 +100,25 @@
 				606A94C9211B7FCA008FF650 /* Assets.xcassets */,
 				606A94CE211B7FCA008FF650 /* Info.plist */,
 				606A94CB211B7FCA008FF650 /* LaunchScreen.storyboard */,
-				606A94C6211B7FC9008FF650 /* Main.storyboard */,
 				606F6665212740DE00B06F20 /* Localizable.strings */,
+				606A94C6211B7FC9008FF650 /* Main.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		88B62DAC71F0D030E7773290 /* LICENSE */ = {
+		817D22B81C6F8ECE4504FAF8 /* LICENSE */ = {
 			isa = PBXGroup;
 			children = (
-				C9809B958286BBE88E9F74EA /* LICENSE.txt */,
+				CC32910D99FCF80F89787E9C /* LICENSE.txt */,
 			);
 			name = LICENSE;
 			path = LICENSE;
 			sourceTree = "<group>";
 		};
-		8E0D434B0AC8A9B365CAE8E8 /* Configuration */ = {
+		9168BA389E6441E1D2D0939F /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				24DAE689B81EEC62AC4D4FF2 /* SampleCode.xcconfig */,
+				65D2122C1CABF5516B3584BE /* SampleCode.xcconfig */,
 			);
 			name = Configuration;
 			sourceTree = "<group>";
@@ -114,9 +126,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		606A94BE211B7FC9008FF650 /* MapSearch */ = {
+		606A94BE211B7FC9008FF650 /* PointsOfInterest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 606A94D1211B7FCA008FF650 /* Build configuration list for PBXNativeTarget "MapSearch" */;
+			buildConfigurationList = 606A94D1211B7FCA008FF650 /* Build configuration list for PBXNativeTarget "PointsOfInterest" */;
 			buildPhases = (
 				606A94BB211B7FC9008FF650 /* Sources */,
 				606A94BC211B7FC9008FF650 /* Frameworks */,
@@ -126,9 +138,9 @@
 			);
 			dependencies = (
 			);
-			name = MapSearch;
+			name = PointsOfInterest;
 			productName = MapSearch;
-			productReference = 606A94BF211B7FC9008FF650 /* MapSearch.app */;
+			productReference = 606A94BF211B7FC9008FF650 /* PointsOfInterest.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -138,7 +150,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1330;
 				ORGANIZATIONNAME = Apple;
 				TargetAttributes = {
 					606A94BE211B7FC9008FF650 = {
@@ -148,7 +160,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 606A94BA211B7FC9008FF650 /* Build configuration list for PBXProject "MapSearch" */;
+			buildConfigurationList = 606A94BA211B7FC9008FF650 /* Build configuration list for PBXProject "PointsOfInterest" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -161,7 +173,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				606A94BE211B7FC9008FF650 /* MapSearch */,
+				606A94BE211B7FC9008FF650 /* PointsOfInterest */,
 			);
 		};
 /* End PBXProject section */
@@ -186,12 +198,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				606A94DF211B93CB008FF650 /* SuggestionsTableViewController.swift in Sources */,
-				606A94D9211B802D008FF650 /* PlaceAnnotation.swift in Sources */,
+				606A94DF211B93CB008FF650 /* SuggestionsViewController.swift in Sources */,
+				60A0AE8F28162FFF005BAC91 /* BaseSearchViewController.swift in Sources */,
+				60E9C059280945AE00E0C371 /* TappablePointOfInterestViewController.swift in Sources */,
+				607BC3B5280949CD0038C308 /* SceneDelegate.swift in Sources */,
+				607BC3B3280947D20038C308 /* LocationService.swift in Sources */,
 				606A94E3211BBDD8008FF650 /* MKPlacemark+Extension.swift in Sources */,
+				60E9C05728093D2200E0C371 /* LocationDetailsViewController.swift in Sources */,
 				606A94C3211B7FC9008FF650 /* AppDelegate.swift in Sources */,
-				606A94D8211B802D008FF650 /* SearchResultTableViewController.swift in Sources */,
-				606A94D7211B802D008FF650 /* MapViewController.swift in Sources */,
+				6061B900280CD73700A88A4C /* MKPointOfInterestCategory+Extension.swift in Sources */,
+				606A94D8211B802D008FF650 /* LocalSearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,7 +243,7 @@
 /* Begin XCBuildConfiguration section */
 		606A94CF211B7FCA008FF650 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24DAE689B81EEC62AC4D4FF2 /* SampleCode.xcconfig */;
+			baseConfigurationReference = 65D2122C1CABF5516B3584BE /* SampleCode.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -252,6 +268,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -277,7 +294,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -289,7 +306,7 @@
 		};
 		606A94D0211B7FCA008FF650 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24DAE689B81EEC62AC4D4FF2 /* SampleCode.xcconfig */;
+			baseConfigurationReference = 65D2122C1CABF5516B3584BE /* SampleCode.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -314,6 +331,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -333,25 +351,29 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		606A94D2211B7FCA008FF650 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24DAE689B81EEC62AC4D4FF2 /* SampleCode.xcconfig */;
+			baseConfigurationReference = 65D2122C1CABF5516B3584BE /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "$(SRCROOT)/MapSearch/Resources/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.MapSearch${SAMPLE_CODE_DISAMBIGUATOR}";
+				INFOPLIST_FILE = "$(SRCROOT)/PointsOfInterest/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.PointsOfInterest${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -361,14 +383,17 @@
 		};
 		606A94D3211B7FCA008FF650 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24DAE689B81EEC62AC4D4FF2 /* SampleCode.xcconfig */;
+			baseConfigurationReference = 65D2122C1CABF5516B3584BE /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "$(SRCROOT)/MapSearch/Resources/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.MapSearch${SAMPLE_CODE_DISAMBIGUATOR}";
+				INFOPLIST_FILE = "$(SRCROOT)/PointsOfInterest/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.PointsOfInterest${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -379,7 +404,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		606A94BA211B7FC9008FF650 /* Build configuration list for PBXProject "MapSearch" */ = {
+		606A94BA211B7FC9008FF650 /* Build configuration list for PBXProject "PointsOfInterest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				606A94CF211B7FCA008FF650 /* Debug */,
@@ -388,7 +413,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		606A94D1211B7FCA008FF650 /* Build configuration list for PBXNativeTarget "MapSearch" */ = {
+		606A94D1211B7FCA008FF650 /* Build configuration list for PBXNativeTarget "PointsOfInterest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				606A94D2211B7FCA008FF650 /* Debug */,

@@ -2,12 +2,12 @@
 See LICENSE folder for this sample’s licensing information.
 
 Abstract:
-The application delegate.
+The app delegate.
 */
 
 import UIKit
 
-@UIApplicationMain
+@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
+    
 }

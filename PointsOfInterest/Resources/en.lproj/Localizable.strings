@@ -9,11 +9,13 @@ Localized strings.
 "LOCATION_SERVICES_DISABLED" = "Location services are not enabled on this device. Please enable location services in Settings.";
 "LOCATION_SERVICES_DENIED" = "Location services were previously denied by the user. Please enable location services for this app in Settings.";
 
+"SEARCH_BAR_PLACEHOLDER" = "Hotels & Restaurants";
+"DEFAULT_SEARCH_QUERY" = "Restaurants";
+
 "SEARCH_RESULTS" = "Search Results";
 "SEARCH_RESULTS_LOCATION" = "Search Results Near %@";
+"SEARCH_RESULTS_ERROR_TITLE" = "Could Not Find Any Places";
 
 "BUTTON_OK" = "OK";
 "BUTTON_CANCEL" = "Cancel";
 "BUTTON_SETTINGS" = "Settings";
-
-"TITLE_ALL_PLACES" = "All Places";
