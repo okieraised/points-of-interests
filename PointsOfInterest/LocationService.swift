@@ -14,51 +14,20 @@ class LocationService: NSObject {
     static let shared = LocationService()
     
     private let locationManager = CLLocationManager()
-    private var foregroundRestorationObserver: NSObjectProtocol?
-    
     /// This property is  `@objc` so that the view controllers can observe when the user location changes through key-value observing.
     @objc dynamic var currentLocation: CLLocation?
     
     /// The view controller that presents any errors coming from location services.
-    var errorPresentationTarget: UIViewController?
+    weak var errorPresentationTarget: UIViewController?
     
     override init() {
         super.init()
         locationManager.delegate = self
-        
-        let name = UIApplication.willEnterForegroundNotification
-        foregroundRestorationObserver = NotificationCenter.default.addObserver(forName: name, object: nil, queue: nil) { [unowned self] (_) in
-            // Get a new location when returning from Settings to enable location services.
-            self.requestLocation()
-        }
     }
 
     func requestLocation() {
-        guard CLLocationManager.locationServicesEnabled() else {
-            displayLocationServicesDisabledAlert()
-            return
-        }
-        
-        let status = locationManager.authorizationStatus
-        guard status != .denied else {
-            displayLocationServicesDeniedAlert()
-            return
-        }
-        
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-    }
-    
-    private func displayLocationServicesDisabledAlert() {
-        let message = NSLocalizedString("LOCATION_SERVICES_DISABLED", comment: "Location services are disabled")
-        let alertController = UIAlertController(title: NSLocalizedString("LOCATION_SERVICES_ALERT_TITLE", comment: "Location services alert title"),
-                                                message: message,
-                                                preferredStyle: .alert)
-        let okAction = UIAlertAction(title: NSLocalizedString("BUTTON_OK", comment: "OK alert button"), style: .default) { _ in
-            // Add any additional button-handling code here.
-        }
-        alertController.addAction(okAction)
-        errorPresentationTarget?.present(alertController, animated: true, completion: nil)
     }
     
     private func displayLocationServicesDeniedAlert() {
@@ -88,6 +57,14 @@ class LocationService: NSObject {
 }
 
 extension LocationService: CLLocationManagerDelegate {
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        let status = locationManager.authorizationStatus
+        if status == .denied {
+            displayLocationServicesDeniedAlert()
+        }
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = locations.last
     }
@@ -96,4 +73,3 @@ extension LocationService: CLLocationManagerDelegate {
         // Handle any errors that `CLLocationManager` returns.
     }
 }
-

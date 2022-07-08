@@ -130,7 +130,7 @@ mapView.selectableMapFeatures = [.pointsOfInterest]
 let mapConfiguration = MKStandardMapConfiguration()
 mapConfiguration.pointOfInterestFilter = MKPointOfInterestFilter(including: MKPointOfInterestCategory.travelPointsOfInterest)
 
-mapView.configuration = mapConfiguration
+mapView.preferredConfiguration = mapConfiguration
 ```
 [View in Source](x-source-tag://SelectableFeature)
 

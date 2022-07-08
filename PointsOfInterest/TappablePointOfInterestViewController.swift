@@ -44,7 +44,7 @@ class TappablePointOfInterestViewController: UIViewController {
         let mapConfiguration = MKStandardMapConfiguration()
         mapConfiguration.pointOfInterestFilter = MKPointOfInterestFilter(including: MKPointOfInterestCategory.travelPointsOfInterest)
         
-        mapView.configuration = mapConfiguration
+        mapView.preferredConfiguration = mapConfiguration
         
         // Set a default location.
         currentLocation = LocationService.shared.currentLocation
